@@ -15,9 +15,9 @@ const Dashboard = () => {
     const fetchStats = async () => {
       try {
         const [c, p, ch] = await Promise.all([
-          axios.get('http://localhost:5000/api/customers?limit=1'),
-          axios.get('http://localhost:5000/api/products?limit=1000'),
-          axios.get('http://localhost:5000/api/challans')
+          axios.get('https://fundsroom.onrender.com/api/customers?limit=1'),
+          axios.get('https://fundsroom.onrender.com/api/products?limit=1000'),
+          axios.get('https://fundsroom.onrender.com/api/challans')
         ]);
         
         const productsData = p.data.data;

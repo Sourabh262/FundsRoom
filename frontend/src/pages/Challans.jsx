@@ -16,7 +16,7 @@ const Challans = () => {
 
   const fetchChallans = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/challans');
+      const res = await axios.get('https://fundsroom.onrender.com/api/challans');
       setChallans(res.data);
     } catch (err) {
       console.error(err);
@@ -26,8 +26,8 @@ const Challans = () => {
   const handleOpenModal = async () => {
     try {
       const [custRes, prodRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/customers?limit=100'),
-        axios.get('http://localhost:5000/api/products?limit=100')
+        axios.get('https://fundsroom.onrender.com/api/customers?limit=100'),
+        axios.get('https://fundsroom.onrender.com/api/products?limit=100')
       ]);
       setCustomers(custRes.data.data.filter(c => c.status !== 'Inactive'));
       setProducts(prodRes.data.data.filter(p => p.stock > 0));
@@ -73,7 +73,7 @@ const Challans = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/challans', {
+      await axios.post('https://fundsroom.onrender.com/api/challans', {
         customerId: parseInt(selectedCustomer),
         status,
         items: items.map(i => ({ productId: parseInt(i.productId), quantity: parseInt(i.quantity) }))

@@ -10,7 +10,7 @@ const Customers = () => {
 
   const fetchCustomers = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/customers?search=${search}`);
+      const res = await axios.get(`https://fundsroom.onrender.com/api/customers?search=${search}`);
       setCustomers(res.data.data);
     } catch (err) {
       console.error(err);
@@ -41,9 +41,9 @@ const Customers = () => {
     
     try {
       if (currentCustomer) {
-        await axios.put(`http://localhost:5000/api/customers/${currentCustomer.id}`, data);
+        await axios.put(`https://fundsroom.onrender.com/api/customers/${currentCustomer.id}`, data);
       } else {
-        await axios.post('http://localhost:5000/api/customers', data);
+        await axios.post('https://fundsroom.onrender.com/api/customers', data);
       }
       handleCloseModal();
       fetchCustomers();
@@ -56,7 +56,7 @@ const Customers = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this customer? All related challans will also be deleted.')) {
       try {
-        await axios.delete(`http://localhost:5000/api/customers/${id}`);
+        await axios.delete(`https://fundsroom.onrender.com/api/customers/${id}`);
         fetchCustomers();
       } catch (err) {
         console.error(err);

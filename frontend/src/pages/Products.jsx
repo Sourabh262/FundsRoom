@@ -11,7 +11,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/products?search=${search}`);
+      const res = await axios.get(`https://fundsroom.onrender.com/api/products?search=${search}`);
       setProducts(res.data.data);
     } catch (err) {
       console.error(err);
@@ -34,9 +34,9 @@ const Products = () => {
     
     try {
       if (currentProduct) {
-        await axios.put(`http://localhost:5000/api/products/${currentProduct.id}`, data);
+        await axios.put(`https://fundsroom.onrender.com/api/products/${currentProduct.id}`, data);
       } else {
-        await axios.post('http://localhost:5000/api/products', data);
+        await axios.post('https://fundsroom.onrender.com/api/products', data);
       }
       setIsModalOpen(false);
       fetchProducts();
@@ -57,7 +57,7 @@ const Products = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/api/inventory/movement', data);
+      await axios.post('https://fundsroom.onrender.com/api/inventory/movement', data);
       setIsStockModalOpen(false);
       fetchProducts();
     } catch (err) {
@@ -68,7 +68,7 @@ const Products = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product? All related stock movements will also be deleted.')) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`);
+        await axios.delete(`https://fundsroom.onrender.com/api/products/${id}`);
         fetchProducts();
       } catch (err) {
         console.error(err);
